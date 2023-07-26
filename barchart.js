@@ -37,7 +37,7 @@
       }
     </style>
   </head>
-  <body>
+  <body> 
     <div class="chartMenu">
       <p>WWW.CHARTJS3.COM (Chart JS <span id="chartVersion"></span>)</p>
     </div>
