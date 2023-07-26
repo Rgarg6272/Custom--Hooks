@@ -1,22 +1,22 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 
-const BarChart2 = () => {
+const BarChart = () => {
   return (
     <div>
       <Bar
         data={{
           labels: [
-            "24th",
-            "25th",
-            "26th",
-            "27th",
-            "28th",
-            "29th",
-            "30th",
-            "1st",
-            "2nd",
-            "3rd",
+            "24-07-2021",
+            "25-07-2021",
+            "26-07-2021",
+            "27-07-2021",
+            "28-07-2021",
+            "29-07-2021",
+            "30-07-2021",
+            "01-08-2021",
+            "02-08-2021",
+            "03-08-2021",
           ],
           datasets: [
             {
@@ -69,4 +69,4 @@ const BarChart2 = () => {
   );
 };
 
-export default BarChart2;
+export default BarChart;
