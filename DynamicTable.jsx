@@ -1,33 +1,45 @@
-import React, { useState } from "react";
-import DynamicTable from "./component/DynamicTable";
+import React from "react";
+import MaterialTable from "material-table";
+import { useState } from "react";
 
-const App = () => {
-  const [columns, setColumns] = useState([
-    {
-      title: "ID",
-      field: "id",
-      align: "center",
-      cellStyle: {
-        textDecoration: "underline",
-      },
-    },
-    { title: "Name", field: "name", align: "center" },
-    { title: "Age", field: "age", type: "numeric", align: "center" },
-    { title: "Gender", field: "gender", type: "string", align: "center" },
-    { title: "Phone", field: "phone", type: "numeric", align: "center" },
-  ]);
-
-  const [data, setData] = useState([
-    { id: 8358083, name: "John", age: 30, gender: "Male", phone: 9876789901 },
-    { id: 8358084, name: "Jone", age: 20, gender: "Male", phone: 9876789901 },
-    { id: 8358085, name: "Krish", age: 23, gender: "Male", phone: 9876789901 },
-    { id: 8358086, name: "Max", age: 43, gender: "Male", phone: 9876789901 },
-  ]);
+const DynamicTable = ({ columns, data }) => {
   return (
     <div>
-      <DynamicTable columns={columns} data={data} />
+      <div className="tableStyle">
+        <MaterialTable
+          title="Dynamic Material Table"
+          columns={columns.map((column) => ({
+            title: column.title,
+            field: column.field,
+            type: column.type,
+            align: column.align,
+            cellStyle: column.cellStyle,
+          }))}
+          data={data.map((item) => {
+            return {
+              id: item.id,
+              name: item.name,
+              age: item.age,
+              gender: item.gender,
+              phone: item.phone,
+            };
+          })}
+          options={{
+            search: false,
+            paging: false,
+            headerStyle: {
+              backgroundColor: "#01579b",
+              color: "#FFF",
+              border: "1px solid black",
+            },
+            rowStyle: {
+              border: "1px solid black",
+            },
+          }}
+        />
+      </div>
     </div>
   );
 };
 
-export default App;
+export default DynamicTable;
