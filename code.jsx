@@ -1,24 +1,34 @@
-  const handleButtonSearch = () => {
-        //console.log('handleButtonsearch::', event.target.innerText, ' ', memberContactData)
-        if (event.target.innerText === "Clear All") {
-            handleClearAll();
-        } else if (
-            event.target.innerText === "Add" || event.target.innerText === "Save" ||
-            (event.keyCode == 13 && event.key === "Enter")
-        ) {
-            if (addHeader === 'Add New Level of Care') {
-                const ccLevelStart = moment(memberFormData.CC_Level_Start, 'MMDDYYYY', true);
-                const ccLevelEnd = moment(rowValue.CC_Level_End, 'MMDDYYYY', true);
-                if(ccLevelStart.isValid() && ccLevelEnd.isValid() && ccLevelStart.isBefore(ccLevelEnd)){
-                    setSearchDialogOpen(true);
-                } else {
-                    getMemberDetails(memberFormData);
+import React, { useState } from "react";
+import DynamicTable from "./component/DynamicTable";
 
-                }
-               // setSearchDialogOpen(true);
-            } else {
-                //console.log('memberContactData::', memberContactData, ' ', delegateData)
-                getMemberDetails(memberContactData);
-            }
-        }
-    }
+const App = () => {
+  const [columns, setColumns] = useState([
+    {
+      title: "ID",
+      field: "id",
+      align: "center",
+      cellStyle: {
+        textDecoration: "underline",
+        cursor: "pointer",
+      },
+    },
+    { title: "Name", field: "name", align: "center" },
+    { title: "Age", field: "age", type: "numeric", align: "center" },
+    { title: "Gender", field: "gender", type: "string", align: "center" },
+    { title: "Phone", field: "phone", type: "numeric", align: "center" },
+  ]);
+
+  const [data, setData] = useState([
+    { id: 8358083, name: "John", age: 30, gender: "Male", phone: 9876789901 },
+    { id: 8358084, name: "Jone", age: 20, gender: "Male", phone: 9876789901 },
+    { id: 8358085, name: "Krish", age: 23, gender: "Male", phone: 9876789901 },
+    { id: 8358086, name: "Max", age: 43, gender: "Male", phone: 9876789901 },
+  ]);
+  return (
+    <div>
+      <DynamicTable columns={columns} data={data} />
+    </div>
+  );
+};
+
+export default App;
