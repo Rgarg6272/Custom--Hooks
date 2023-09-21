@@ -1,48 +1,33 @@
-import React from "react";
-import MaterialTable from "material-table";
-import { useState } from "react";
-import { Button, Grid } from "@material-ui/core";
-import { tableData } from "./memberData";
+import React, { useState } from "react";
+import DynamicTable from "./component/DynamicTable";
 
-const DynamicTable = () => {
+const App = () => {
   const [columns, setColumns] = useState([
-    { title: "ID", field: "id", align: "center" },
+    {
+      title: "ID",
+      field: "id",
+      align: "center",
+      cellStyle: {
+        textDecoration: "underline",
+      },
+    },
     { title: "Name", field: "name", align: "center" },
-    { title: "Age", field: "age", align: "center" },
+    { title: "Age", field: "age", type: "numeric", align: "center" },
+    { title: "Gender", field: "gender", type: "string", align: "center" },
+    { title: "Phone", field: "phone", type: "numeric", align: "center" },
   ]);
 
   const [data, setData] = useState([
-    { id: 1, name: "John", age: 30 },
-    { id: 2, name: "Jone", age: 20 },
-    { id: 3, name: "Krish", age: 23 },
-    { id: 4, name: "Max", age: 43 },
-    { id: 5, name: "Dan", age: 25 },
-    { id: 6, name: "Raj", age: 23 },
+    { id: 8358083, name: "John", age: 30, gender: "Male", phone: 9876789901 },
+    { id: 8358084, name: "Jone", age: 20, gender: "Male", phone: 9876789901 },
+    { id: 8358085, name: "Krish", age: 23, gender: "Male", phone: 9876789901 },
+    { id: 8358086, name: "Max", age: 43, gender: "Male", phone: 9876789901 },
   ]);
-
   return (
     <div>
-      <div className="tableStyle">
-        <MaterialTable
-          title="Dynamic Material Table"
-          columns={columns}
-          data={data}
-          options={{
-            search: false,
-            paging: false,
-            headerStyle: {
-              backgroundColor: "#01579b",
-              color: "#FFF",
-              border: "1px solid black",
-            },
-            rowStyle: {
-              border: "1px solid black",
-            },
-          }}
-        />
-      </div>
+      <DynamicTable columns={columns} data={data} />
     </div>
   );
 };
 
-export default DynamicTable;
+export default App;
