@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DynamicTable from "./component/DynamicTable";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {
   const [columns, setColumns] = useState([
@@ -25,9 +26,16 @@ const App = () => {
     { id: 8358086, name: "Max", age: 43, gender: "Male", phone: 9876789901 },
   ]);
   return (
-    <div>
-      <DynamicTable columns={columns} data={data} />
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={<DynamicTable columns={columns} data={data} />}
+          />
+        </Routes>
+      </Router>
+    </>
   );
 };
 
