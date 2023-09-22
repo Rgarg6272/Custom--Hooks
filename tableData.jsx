@@ -1,22 +1,22 @@
-export const DelegatedLevelTabletData = [
+export const MemberInfoDetails = [
   {
-    id: 0,
-    Entity: "PMS",
-    CC_Level: 3,
-    CC_Level_Start: '01-01-2023',
-    CC_Level_End: '01-05-2023',
-    Reason_For_End: "L3-NFLOC-Start",
-    Action: "",
-    enableDatePicker: false
+    id: "First_name",
+    label: "First Name",
+    value: "",
   },
   {
-    id: 1,
-    Entity: "CC",
-    CC_Level: 7,
-    CC_Level_Start: '01-01-2023',
-    CC_Level_End: '01-01-2023',
-    Reason_For_End: "L7-CLPMSF-CCL_End",
-    Action: "",
-    enableDatePicker: false
+    id: "Middle_name",
+    label: "Middle Name",
+    value: "",
   },
-]
+  {
+    id: "Last_name",
+    label: "Last Name",
+    value: "",
+  },
+  {
+    id: "Dob",
+    label: "Date of Birth",
+    value: "",
+  }
+];
