@@ -1,41 +1,52 @@
- const formattedData = (item, MemberInfoData) => {
-        if (MemberInfoData.Name_and_dob) {
-            if (item.id === 'First_name') {
-                return MemberInfoData.Name_and_dob['First_name'];
-            } else if (item.id === 'Middle_name') {
-                return MemberInfoData.Name_and_dob['Middle_name'];
-            } else if (item.id === 'Last_name') {
-                return MemberInfoData.Name_and_dob['Last_name'];
-            } else if (item.id === 'Dob') {
-                return MemberInfoData.Name_and_dob['Dob'];
-            }
-        } else if (MemberInfoData.Identifiers) {
-            if (item.id === 'Subscriber_id') {
-                return MemberInfoData.Name_and_dob['First_name'];
-            } else if (item.id === 'Jiva_id') {
-                return MemberInfoData.Name_and_dob['Middle_name'];
-            } else if (item.id === 'Last_name') {
-                return MemberInfoData.Name_and_dob['Last_name'];
-            } 
-        } else if (MemberInfoData.Address) {
-            if (item.id === 'First_name') {
-                return MemberInfoData.Name_and_dob['First_name'];
-            } else if (item.id === 'Middle_name') {
-                return MemberInfoData.Name_and_dob['Middle_name'];
-            } else if (item.id === 'Last_name') {
-                return MemberInfoData.Name_and_dob['Last_name'];
-            } else if (item.id === 'Dob') {
-                return MemberInfoData.Name_and_dob['Dob'];
-            }
-        } else if (MemberInfoData.Contact_details) {
-            if (item.id === 'First_name') {
-                return MemberInfoData.Name_and_dob['First_name'];
-            } else if (item.id === 'Middle_name') {
-                return MemberInfoData.Name_and_dob['Middle_name'];
-            } else if (item.id === 'Last_name') {
-                return MemberInfoData.Name_and_dob['Last_name'];
-            } else if (item.id === 'Dob') {
-                return MemberInfoData.Name_and_dob['Dob'];
-            }
-        }
-    }
+export const MemberInfoDetails = [
+  {
+    id: "First_name",
+    label: "First Name",
+    value: "",
+  },
+  {
+    id: "Middle_name",
+    label: "Middle Name",
+    value: "",
+  },
+  {
+    id: "Last_name",
+    label: "Last Name",
+    value: "",
+  },
+  {
+    id: "Dob",
+    label: "Date of Birth",
+    value: "",
+  }
+];
+export const MemberIdentifier = [
+  {
+    id: "Subscriber_id",
+    label: "Subscriber ID",
+    value: "",
+  },
+  {
+    id: "Medicaid_id",
+    label: "Medicaid ID",
+    value: "",
+  },
+  {
+    id: "Jiva_id",
+    label: "Jiva ID",
+    value: "",
+  }
+];
+export const MemberAddress = [
+  {
+    id: "Address",
+    value: '',
+  },
+];
+export const MemberContact = [
+  {
+    id: "Contact_phone_number",
+    label: "Home",
+    value: '',//(505) 387-9088
+  },
+];
