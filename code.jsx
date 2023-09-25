@@ -1,53 +1,31 @@
-const MemberInfoData = {
-  First_name: "Raj",
-  Middle_name: "Kumar",
-  Last_name: "Garg",
-
-  Dob: "2001-04-20",
+const formatData = (id, data) => {
+  const value = data[id];
+  // const value = MemberInfoData[key] || "-";
+  //console.log(value);
+  return { label: id, value: value || "-" };
 };
 
-const MemberInfoDetails = [
-  {
-    id: "First_name",
-    label: "First Name",
-    value: "",
-  },
+useEffect(() => {
+  // Set memberData
+  setMemberData(
+    MemberInfoDetails.map((item) => formatData(item.id, MemberInfoData))
+  );
 
-  {
-    id: "Middle_name",
-    label: "Middle Name",
-    value: "",
-  },
+  // Set memberIdentify
 
-  {
-    id: "Last_name",
-    label: "Last Name",
-    value: "",
-  },
+  setMemberIdentify(
+    MemberIdentifier.map((item) => formatData(item.id, MemberInfoData))
+  );
 
-  {
-    id: "Dob",
-    label: "Date of Birth",
-    value: "",
-  },
-];
+  // Set memberAddress
 
-const formattedData = (item, MemberInfoData) => {
-  if (MemberInfoData) {
-    const key = item.id;
+  setMemberAddress(
+    MemberAddress.map((item) => formatData(item.id, MemberInfoData))
+  );
 
-    if (MemberInfoData[key]) {
-      return MemberInfoData[key];
-    }
-  }
+  // Set memberContact
 
-  return ""; // Return an empty string if no match is found
-};
-
-// Test the function for each item in MemberInfoDetails
-
-MemberInfoDetails.forEach((item) => {
-  const value = formattedData(item, MemberInfoData);
-
-  console.log(`${item.label}: ${value}`);
-});
+  setMemberContact(
+    MemberContact.map((item) => formatData(item.id, MemberInfoData))
+  );
+}, []);
