@@ -1,97 +1,53 @@
-const formattedData = (id, data) => {
-  switch (id) {
-    case "First_name":
-      return data.Name_and_dob?.First_name || "-";
+const MemberInfoData = {
+  First_name: "Raj",
+  Middle_name: "Kumar",
+  Last_name: "Garg",
 
-    case "Middle_name":
-      return data.Name_and_dob?.Middle_name || "-";
-
-    case "Last_name":
-      return data.Name_and_dob?.Last_name || "-";
-
-    case "Dob":
-      return data.Name_and_dob?.Dob || "-";
-
-    case "Subscriber_id":
-      return data.Identifiers?.Subscriber_id || "-";
-
-    case "Medicaid_id":
-      return data.Identifiers?.Medicaid_id || "-";
-
-    case "Jiva_id":
-      return data.Identifiers?.Jiva_id || "-";
-
-    case "Address":
-      return data.Address || "-";
-
-    case "Contact_phone_number":
-      const phoneNumber = data.Contact_details?.Contact_phone_number || "-";
-
-      return formatPhoneNumber(phoneNumber);
-
-    default:
-      return "-";
-  }
+  Dob: "2001-04-20",
 };
 
-// Helper function to format phone numbers
+const MemberInfoDetails = [
+  {
+    id: "First_name",
+    label: "First Name",
+    value: "",
+  },
 
-const formatPhoneNumber = (phoneNumber) => {
-  const cleaned = ("" + phoneNumber).replace(/\D/g, "");
+  {
+    id: "Middle_name",
+    label: "Middle Name",
+    value: "",
+  },
 
-  const match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
+  {
+    id: "Last_name",
+    label: "Last Name",
+    value: "",
+  },
 
-  if (match) {
-    const intlCode = match[1] ? "+1 " : "";
+  {
+    id: "Dob",
+    label: "Date of Birth",
+    value: "",
+  },
+];
 
-    return [intlCode, "(", match[2], ") ", match[3], "-", match[4]].join("");
+const formattedData = (item, MemberInfoData) => {
+  if (MemberInfoData) {
+    const key = item.id;
+
+    if (MemberInfoData[key]) {
+      return MemberInfoData[key];
+    }
   }
 
-  return phoneNumber;
+  return ""; // Return an empty string if no match is found
 };
 
-// Inside the useEffect
+// Test the function for each item in MemberInfoDetails
 
-useEffect(() => {
-  console.log("MemberInfoData::", MemberInfoData);
+MemberInfoDetails.forEach((item) => {
+  const value = formattedData(item, MemberInfoData);
 
-  // Set memberData
-
-  setMemberData(
-    MemberInfoDetails.map((item) => ({
-      ...item,
-
-      value: formattedData(item.id, MemberInfoData),
-    }))
-  );
-
-  // Set memberIdentify
-
-  setMemberIdentify(
-    MemberIdentifier.map((item) => ({
-      ...item,
-
-      value: formattedData(item.id, MemberInfoData),
-    }))
-  );
-
-  // Set memberAddress
-
-  setMemberAddress(
-    MemberAddress.map((item) => ({
-      ...item,
-
-      value: formattedData(item.id, MemberInfoData),
-    }))
-  );
-
-  // Set memberContact
-
-  setMemberContact(
-    MemberContact.map((item) => ({
-      ...item,
-
-      value: formattedData(item.id, MemberInfoData),
-    }))
-  );
-}, []);
+  console.log(`${item.label}: ${value}`);
+});
